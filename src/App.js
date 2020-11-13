@@ -10,7 +10,9 @@ class App extends React.Component {
       userChoice: null,
       cpuChoice: null,
       userScore: 0,
+      resultsBanner: null,
       rulesModal: false,
+      rounds: 0,
       cpuOption: [ROCK, PAPER, SCISSORS],
       gameLogic: {
         "ROCK": {
@@ -30,24 +32,53 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.getCPUChoice()
+    // this.getCPUChoice();
+  }
+
+  async componentDidUpdate(prevProps, prevState){
+    const { userChoice, cpuChoice,gameLogic,rounds } = this.state;
+
+    let result = null;
+   
+    if(prevState.rounds !== rounds){
+      let newCPUChoice = await this.getCPUChoice();
+
+      if(newCPUChoice === userChoice){
+        result = "draw"
+        console.log(result)
+      } 
+      else if (gameLogic[newCPUChoice].loses === userChoice){
+        result = "Player wins!"
+        console.log(result)
+      } else {
+        result = "Player loses :("
+        console.log(result)
+      }
+
+      this.setState({
+        resultsBanner: result
+      })
+    }
   }
 
   getCPUChoice() {
-
-    const index = getRndInteger(0,2);
-
-    const cpuChoice = this.state.cpuOption[index];
-
-    this.setState({
-      cpuChoice: cpuChoice
+    return new Promise(resolve =>{
+      const index = getRndInteger(0,2);
+      const cpuChoice = this.state.cpuOption[index];
+      this.setState({
+        cpuChoice: cpuChoice
+      })
+      setTimeout(()=>{
+        resolve(this.state.cpuChoice)
+      },200)
     })
-
+   
   }
 
   getUserChoice=(choice) =>{
     this.setState({
-      userChoice: choice
+      userChoice: choice,
+      rounds: this.state.rounds + 1
     })
   }
 
@@ -60,7 +91,10 @@ class App extends React.Component {
         <button onClick={()=>this.getUserChoice(ROCK)}>Rock</button>
         <button onClick={()=>this.getUserChoice(PAPER)}>Paper</button>
         <button onClick={()=>this.getUserChoice(SCISSORS)}>Scissor</button>
+        <br/>
         {this.state.userChoice}
+        <br/>
+        {this.state.resultsBanner}
       </div>
     )
   }
