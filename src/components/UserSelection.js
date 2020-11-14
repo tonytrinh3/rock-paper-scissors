@@ -1,28 +1,36 @@
 import React from "react";
-import ROCK from "assets/img/icon-rock.svg";
-import PAPER from "assets/img/icon-paper.svg";
-import SCISSORS from "assets/img/icon-scissors.svg";
-import SPOCK from "assets/img/icon-spock.svg";
-import LIZARD from "assets/img/icon-lizard.svg";
-import pentagon from "assets/img/bg-pentagon.svg";
+// import ROCK from "assets/img/icon-rock.svg";
+// import PAPER from "assets/img/icon-paper.svg";
+// import SCISSORS from "assets/img/icon-scissors.svg";
+// import SPOCK from "assets/img/icon-spock.svg";
+// import LIZARD from "assets/img/icon-lizard.svg";
+// import pentagon from "assets/img/bg-pentagon.svg";
 
-const UserSelection = () => {
+import { ROCK, PAPER, SCISSORS, SPOCK, LIZARD } from "utilities/types";
+
+//TODO: GET STUFF IN PENTAGON AND MAKE IT RESPONSIVE
+const UserSelection = (props) => {
   return (
     <div className="user-selection">
-      <div class="outer-circle outer-circle__rock">
-        <div class="inner-circle inner-circle__rock"></div>
-      </div>
-      <div class="outer-circle outer-circle__paper">
-        <div class="inner-circle inner-circle__paper"></div>
-      </div>
-      <div class="outer-circle outer-circle__scissors">
-        <div class="inner-circle inner-circle__scissors"></div>
-      </div>
-      <div class="outer-circle outer-circle__spock">
-        <div class="inner-circle inner-circle__spock"></div>
-      </div>
-      <div class="outer-circle outer-circle__lizard">
-        <div class="inner-circle inner-circle__lizard"></div>
+      <div className="user-selection__pentagon">
+        <div onClick={() => props.getUserChoice(SCISSORS)} className="outer-circle outer-circle__scissors">
+          <div className="inner-circle inner-circle__scissors"></div>
+        </div>
+
+        <div onClick={() => props.getUserChoice(SPOCK)} className="outer-circle outer-circle__spock">
+          <div className="inner-circle inner-circle__spock"></div>
+        </div>
+
+        <div onClick={() => props.getUserChoice(PAPER)} className="outer-circle outer-circle__paper">
+          <div className="inner-circle inner-circle__paper"></div>
+        </div>
+
+        <div onClick={() => props.getUserChoice(LIZARD)} className="outer-circle outer-circle__lizard">
+          <div className="inner-circle inner-circle__lizard"></div>
+        </div>
+        <div onClick={() => props.getUserChoice(ROCK)} className="outer-circle outer-circle__rock">
+          <div className="inner-circle inner-circle__rock"></div>
+        </div>
       </div>
     </div>
   );

@@ -92,7 +92,10 @@ class App extends React.Component {
       userChoice: choice,
       rounds: this.state.rounds + 1,
     });
+    console.log(this.userChoice);
   };
+
+
 
   // componentWillUnmount () {
   //   //TODO: need to clear result before each round
@@ -106,24 +109,19 @@ class App extends React.Component {
       <div className="container">
         <Header score = {this.state.userScore} />
 
-        {/* {`CPU chooses: ${this.state.cpuChoice}`}
+        {`CPU chooses: ${this.state.cpuChoice}`}
         <br />
-        <button onClick={() => this.getUserChoice(ROCK)}>Rock</button>
-        <button onClick={() => this.getUserChoice(PAPER)}>Paper</button>
-        <button onClick={() => this.getUserChoice(SCISSORS)}>Scissor</button>
-        <button onClick={() => this.getUserChoice(SPOCK)}>SPOCK</button>
-        <button onClick={() => this.getUserChoice(LIZARD)}>LIZARD</button>
-        <br />
+    
         {`User chooses: ${this.state.userChoice}`}
         <br />
         <div className="aewf" ref={this.resultsBanner}>
           {this.state.resultsBanner}
         </div>
         
-        <br /> */}
+        <br />
 
 
-        <UserSelection/>
+        <UserSelection getUserChoice = {this.getUserChoice}/>
 
 
 

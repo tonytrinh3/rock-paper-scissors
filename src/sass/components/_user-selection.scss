@@ -1,75 +1,89 @@
-.user-selection{
-    grid-column: center-start/center-end;
-    // background-image: url("../../assets/img/bg-pentagon.svg");
-    // // height: 100vh;
-    // background-repeat: no-repeat;
-    display: grid;
-}
+.user-selection {
+  grid-column: center-start/center-end;
+  // background-image: url("../../assets/img/bg-pentagon.svg");
+  // // height: 100vh;
+  // background-repeat: no-repeat;
 
-
-.outer-circle {
-    position: relative;
-    margin: 5rem;
-    width: 10rem;
-    height:  10rem;
-    border-radius: 50%;
-    background: #ffffff;
-
+  &__pentagon {
+    background-image: url("../../assets/img/bg-pentagon.svg");
+    height: 100vh;
     background-repeat: no-repeat;
     background-position: center;
-
-    &__rock{
-        background-image:url("../../assets/img/icon-rock.svg");
-    }
-    &__paper{
-        background-image:url("../../assets/img/icon-paper.svg");
-    }
-    &__scissors{
-        background-image:url("../../assets/img/icon-scissors.svg");
-    }
-    &__spock{
-        background-image:url("../../assets/img/icon-spock.svg");
-    }
-    &__lizard{
-        background-image:url("../../assets/img/icon-lizard.svg");
-    }
-
+    z-index: -1000;
+    display: grid;
+    grid-template-columns: repeat(5, 10rem);
+    grid-template-rows: repeat(3, 20rem);
   }
-  
-  .inner-circle {
-  
-    content: "";
-    position: absolute;
-    top: -2rem;
-    bottom: -2rem;
-    right: -2rem;
-    left: -2rem;
-    z-index: -1;
-    border-radius: inherit;
+}
 
-    &__rock{
-        background-image:$rock-color ;
-    }
-    &__paper{
-        background-image:$paper-color ;
-    }
-    &__scissors{
-        background-image:$scissors-color ;
-    }
-    &__spock{
-        background-image:$spock-color ;
-    }
-    &__lizard{
-        background-image:$lizard-color ;
-    }
+.outer-circle {
+  position: relative;
+  margin: 5rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: #ffffff;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+
+
+  &__scissors {
+    background-image: url("../../assets/img/icon-scissors.svg");
+    grid-row: 1;
+    grid-column:3;
   }
-  
 
+  &__paper {
+    background-image: url("../../assets/img/icon-paper.svg");
+    grid-row: 2;
+    grid-column:5;
+  }
 
+  &__spock {
+    background-image: url("../../assets/img/icon-spock.svg");
+    grid-row: 2;
+    
+  }
+  &__lizard {
+    background-image: url("../../assets/img/icon-lizard.svg");
+    grid-row: 3;
+    grid-column:2;
+  }
+  &__rock {
+    background-image: url("../../assets/img/icon-rock.svg");
+    grid-row: 3;
+    grid-column:4;
+  }
+}
 
+.inner-circle {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  bottom: -2rem;
+  right: -2rem;
+  left: -2rem;
+  z-index: -1;
+  border-radius: inherit;
 
-
-
+  &__scissors {
+    background-image: $scissors-color;
+  }
+  &__paper {
+    background-image: $paper-color;
+  }
+ 
+  &__spock {
+    background-image: $spock-color;
+  }
+  &__lizard {
+    background-image: $lizard-color;
+  }
+  &__rock {
+    background-image: $rock-color;
+  }
+}
 
 //   .game-piece{
 
@@ -79,17 +93,16 @@
 //     height: 20rem;
 //     border-radius: 50%;
 
-
 //     &__img{
 //         background-color: white;
-        
+
 //         width: 5rem;
 //         height: 5rem;
 //         display: block;
 //         margin: 2rem auto;
-     
+
 //         // margin: 2rem;
-        
+
 //     }
 
 //     &--rock{
@@ -98,7 +111,7 @@
 
 //     // &--rock{
 //     //     // border: solid 10rem red;
-        
+
 //     // }
-    
+
 // }
