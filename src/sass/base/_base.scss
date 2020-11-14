@@ -35,6 +35,7 @@ button {
   font-size: 2.2rem;
   font-weight: 600;
   height: 6rem;
+  border-radius: $std-border-radius;
 }
 
 button:focus {outline:0;}

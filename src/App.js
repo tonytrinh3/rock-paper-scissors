@@ -107,8 +107,10 @@ class App extends React.Component {
   renderPlayArea() {
     return (
       <div className="play-area">
+        <h2 className="play-area__name play-area__name--1">YOU PICKED</h2>
+        <h2 className="play-area__name play-area__name--2">THE HOUSE PICKED</h2>
         <GamePiece choice={this.state.userChoice} element={1} />
-        <div className="play-area__piece--2">
+        <div className="play-area__piece play-area__piece--2">
           <h1 className="play-area__result " >
             {this.state.resultsBanner}
           </h1>
