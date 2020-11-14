@@ -1,4 +1,61 @@
 .rules-modal{
 
+    position:fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10000;
+    background-color: rgba(0,0,0,.4);
+    overflow: auto;
+
+    display:grid;
+    grid-template-columns:
+    [full-start] minmax(6rem, 1fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+    [center-end]
+    minmax(6rem, 1fr) [full-end];
+
+    &__display{
+
+        grid-column: center-start/center-end;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: minmax(min-content,max-content) max-content;
     
+        background-color: white;
+        height: 40%;
+        width: 40%;
+        align-self: center;
+        justify-self: center;
+        border-radius: $std-border-radius;
+        padding: 2rem;
+
+
+        &__header{
+            color: $dark-text-color;
+            grid-row:1;
+            grid-column: 1;
+        }
+
+        &__close-btn{
+            grid-row:1;
+            grid-column: 3;
+            cursor: pointer;
+            height: 3rem;
+            width: 3rem;
+           
+            align-self: center;
+            justify-self: end;
+        }
+
+        &__rules{
+            grid-row:2;
+            grid-column: 1/-1;
+            align-self: center;
+            justify-self: center;
+        }
+        
+    }
+
 }

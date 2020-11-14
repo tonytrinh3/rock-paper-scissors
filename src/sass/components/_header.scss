@@ -6,10 +6,22 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
 
+    @media only screen and (max-width:$mobile-width){
+        padding: 1rem 2rem;
+        border: solid 2px $header-outline-color;
+        
+    }
+
     &__logo{
         align-self: center;
         justify-self: start;
+
+        @media only screen and (max-width:$mobile-width){
+            height: 10rem;
+            
+        }
     }
+
 
     &__score-card{
         grid-column: -1;
@@ -21,6 +33,9 @@
         width: 15rem;
         padding: 1rem 0;
 
+        @media only screen and (max-width:$mobile-width){
+            width: 10rem;
+        }
 
        &__title{
         color: $score-text-color;
@@ -33,6 +48,10 @@
         font-weight:700;
         font-size: 7rem;
         line-height: 0;
+
+        @media only screen and (max-width:$mobile-width){
+            font-size: 5rem;
+        }
        }
     }
 }

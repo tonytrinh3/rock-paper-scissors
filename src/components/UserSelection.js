@@ -14,7 +14,7 @@ const UserSelection = (props) => {
 
     const onClickFunc = (choice)=>{
         props.getUserChoice(choice);
-        props.triggerResults(true);
+        props.triggerRenderResults(true);
     };
     
 

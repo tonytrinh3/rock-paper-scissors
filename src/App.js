@@ -6,6 +6,7 @@ import getRndInteger from "utilities/getRndInteger";
 import Header from "components/Header";
 import UserSelection from "components/UserSelection";
 import GamePiece from "components/GamePiece";
+import RulesModal from "components/RulesModal";
 
 //TODO on load - show modal first...
 //TODO: NEED TO MAKE SCORE CONSTANT AFTER REFRESH
@@ -17,7 +18,7 @@ class App extends React.Component {
       cpuChoice: null,
       userScore: 0,
       resultsBanner: null,
-      rulesModal: false,
+      showRulesModal: false,
       rounds: 0,
       showResults: false,
       cpuOption: [ROCK, PAPER, SCISSORS, SPOCK, LIZARD],
@@ -102,6 +103,12 @@ class App extends React.Component {
     });
   };
 
+  closeModal = (nextState)=>{
+    this.setState({
+      showRulesModal: nextState,
+    });
+  }
+
  
   //i want to keep this here to avoid 2 drops of props if this were to become a separate component
   renderPlayArea() {
@@ -124,13 +131,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+     
         <Header score={this.state.userScore} />
         {this.state.showResults ? (
           this.renderPlayArea()
         ) : (
-          <UserSelection getUserChoice={this.getUserChoice} triggerResults={this.triggerRenderResults} />
+          <UserSelection getUserChoice={this.getUserChoice} triggerRenderResults={this.triggerRenderResults} />
         )}
-        <button className = "rules-btn">RULES</button>
+
+        {this.state.showRulesModal ? <RulesModal closeModal = {this.closeModal} /> :null }
+        <button onClick = {()=>{this.setState({showRulesModal:true})}}className = "rules-btn">RULES</button>
      
       </div>
     );
