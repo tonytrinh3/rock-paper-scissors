@@ -7,6 +7,7 @@ import Header from "components/Header";
 import UserSelection from "components/UserSelection";
 import GamePiece from "components/GamePiece";
 
+//TODO on load - show modal first...
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,7 @@ class App extends React.Component {
       resultsBanner: null,
       rulesModal: false,
       rounds: 0,
+      showResults: false,
       cpuOption: [ROCK, PAPER, SCISSORS, SPOCK, LIZARD],
       gameLogic: {
         ROCK: {
@@ -83,7 +85,7 @@ class App extends React.Component {
       });
       setTimeout(() => {
         resolve(this.state.cpuChoice);
-      }, 200);
+      }, 10);
     });
   }
 
@@ -94,6 +96,12 @@ class App extends React.Component {
     });
   };
 
+  triggerRenderResults = (nextState) => {
+    this.setState({
+      showResults: nextState,
+    });
+  };
+
   // componentWillUnmount () {
   //   //TODO: need to clear result before each round
   //   this.resultsBanner = this.resultsBanner.destroy();
@@ -101,26 +109,33 @@ class App extends React.Component {
 
   //TODO: RENDERING OF BUTTON COULD BE DONE THROUGH A COMPONENT
   //TODO: NEED TO MAKE SCORE CONSTANT AFTER REFRESH
+
+  renderPlayArea() {
+    return (
+      <div className="play-area">
+        <GamePiece choice={this.state.userChoice} element={1} />
+        <div className="play-area__piece--2">
+          <h1 className="play-area__result " ref={this.resultsBanner}>
+            {this.state.resultsBanner}
+          </h1>
+          <button onClick = {()=>this.setState({showResults: false})}className="play-area__play-btn">PLAY AGAIN</button>
+        </div>
+        <GamePiece choice={this.state.cpuChoice} element={3} />
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="container">
         <Header score={this.state.userScore} />
-
-        <div className="play-area">
-          <GamePiece choice={this.state.userChoice} element={1} />
-          <div className="play-area__piece--2">
-            <h1 className="play-area__result " ref={this.resultsBanner}>
-              {this.state.resultsBanner}
-            </h1>
-            <button className="play-area__play-btn">PLAY AGAIN</button>
-          </div>
-
-          <GamePiece choice={this.state.cpuChoice} element={3} />
-        </div>
-
-        <br />
-
-        <UserSelection getUserChoice={this.getUserChoice} />
+        {this.state.showResults ? (
+          this.renderPlayArea()
+        ) : (
+          <UserSelection getUserChoice={this.getUserChoice} triggerResults={this.triggerRenderResults} />
+        )}
+        {/* {this.renderPlayArea()}
+        <UserSelection getUserChoice={this.getUserChoice} /> */}
       </div>
     );
   }
