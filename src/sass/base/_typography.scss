@@ -6,6 +6,7 @@ body {
     line-height: 1.4375; //16px size with a 23px line height
     //1em = 16 px  1rem = 10px  .625em = 1rem  we want .67em
     font-size: $default-font-size;
+    color: $default-text-color;
 }
 
 a{

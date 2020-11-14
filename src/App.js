@@ -3,6 +3,8 @@ import "sass/main.scss";
 import { ROCK, PAPER, SCISSORS, SPOCK, LIZARD } from "utilities/types";
 import getRndInteger from "utilities/getRndInteger";
 
+import Header from 'components/Header';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,16 +42,13 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // this.getCPUChoice();
-  }
 
   async componentDidUpdate(prevProps, prevState) {
     const { userChoice, gameLogic, rounds, userScore } = this.state;
 
     if (prevState.rounds !== rounds) {
       let newCPUChoice = await this.getCPUChoice();
-
+      //TODO - put into new component to make code cleaner
       if (newCPUChoice === userChoice) {
         return this.setState({
           resultsBanner: "draw",
@@ -102,7 +101,8 @@ class App extends React.Component {
   //TODO: RENDERING OF BUTTON COULD BE DONE THROUGH A COMPONENT
   render() {
     return (
-      <div className="App">
+      <div className="container">
+        <Header />
         {`CPU chooses: ${this.state.cpuChoice}`}
         <br />
         <button onClick={() => this.getUserChoice(ROCK)}>Rock</button>
@@ -116,6 +116,7 @@ class App extends React.Component {
         <div className="aewf" ref={this.resultsBanner}>
           {this.state.resultsBanner}
         </div>
+        <p>awefawef</p>
         <br />
         {this.state.userScore}
       </div>

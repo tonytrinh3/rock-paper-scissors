@@ -1,0 +1,38 @@
+.header{
+    grid-column: center-start/center-end;
+    border: solid 5px $header-outline-color;
+    border-radius: 2rem;
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+
+    &__logo{
+        align-self: center;
+        justify-self: start;
+    }
+
+    &__score-card{
+        grid-column: -1;
+        justify-self: end;
+        background-color: white;
+        display: grid;
+      
+        border-radius:1rem;
+        width: 15rem;
+        padding: 1rem 0;
+
+
+       &__title{
+        color: $score-text-color;
+        text-align: center;
+       }
+
+       &__score{
+        color: $dark-text-color;
+        text-align: center;
+        font-weight:700;
+        font-size: 7rem;
+        line-height: 0;
+       }
+    }
+}
