@@ -1,6 +1,8 @@
 import React from "react";
 
 const GamePiece = (props) => {
+
+    //TODO: MAYBE NEED TO PUT THIS AS A SEPARATE COMPONENT bc USER SELECTION USE SAME CODE
   const gamePieceLibrary = {
     ROCK: (
       <div className="outer-circle outer-circle--large outer-circle__rock">

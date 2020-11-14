@@ -1,0 +1,16 @@
+.rules-btn{
+    grid-column:center-start/center-end;
+    grid-row: 1000;
+    justify-self: end;
+    align-self: end;
+    border: solid 2px $default-text-color;
+    border-radius: $std-border-radius;
+    color: $default-text-color;
+    width: 20rem;
+
+    @media only screen and (max-width:$mobile-width){
+        justify-self: center;
+        align-self: center;
+    }
+
+}

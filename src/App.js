@@ -8,10 +8,10 @@ import UserSelection from "components/UserSelection";
 import GamePiece from "components/GamePiece";
 
 //TODO on load - show modal first...
+//TODO: NEED TO MAKE SCORE CONSTANT AFTER REFRESH
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.resultsBanner = React.createRef();
     this.state = {
       userChoice: null,
       cpuChoice: null,
@@ -102,20 +102,14 @@ class App extends React.Component {
     });
   };
 
-  // componentWillUnmount () {
-  //   //TODO: need to clear result before each round
-  //   this.resultsBanner = this.resultsBanner.destroy();
-  // }
-
-  //TODO: RENDERING OF BUTTON COULD BE DONE THROUGH A COMPONENT
-  //TODO: NEED TO MAKE SCORE CONSTANT AFTER REFRESH
-
+ 
+  //i want to keep this here to avoid 2 drops of props if this were to become a separate component
   renderPlayArea() {
     return (
       <div className="play-area">
         <GamePiece choice={this.state.userChoice} element={1} />
         <div className="play-area__piece--2">
-          <h1 className="play-area__result " ref={this.resultsBanner}>
+          <h1 className="play-area__result " >
             {this.state.resultsBanner}
           </h1>
           <button onClick = {()=>this.setState({showResults: false})}className="play-area__play-btn">PLAY AGAIN</button>
@@ -134,8 +128,8 @@ class App extends React.Component {
         ) : (
           <UserSelection getUserChoice={this.getUserChoice} triggerResults={this.triggerRenderResults} />
         )}
-        {/* {this.renderPlayArea()}
-        <UserSelection getUserChoice={this.getUserChoice} /> */}
+        <button className = "rules-btn">RULES</button>
+     
       </div>
     );
   }

@@ -13,7 +13,6 @@ import { ROCK, PAPER, SCISSORS, SPOCK, LIZARD } from "utilities/types";
 const UserSelection = (props) => {
 
     const onClickFunc = (choice)=>{
-        console.log("triggered?")
         props.getUserChoice(choice);
         props.triggerResults(true);
     };

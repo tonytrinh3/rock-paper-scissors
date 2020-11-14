@@ -1,7 +1,7 @@
 .header{
     grid-column: center-start/center-end;
     border: solid 5px $header-outline-color;
-    border-radius: 2rem;
+    border-radius: $std-border-radius;
     padding: 2rem 3rem;
     display: grid;
     grid-template-columns: repeat(3,1fr);
