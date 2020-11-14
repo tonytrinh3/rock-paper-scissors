@@ -3,9 +3,9 @@ import "sass/main.scss";
 import { ROCK, PAPER, SCISSORS, SPOCK, LIZARD } from "utilities/types";
 import getRndInteger from "utilities/getRndInteger";
 
-import Header from 'components/Header';
-import UserSelection from 'components/UserSelection';
-import GamePiece from 'components/GamePiece';
+import Header from "components/Header";
+import UserSelection from "components/UserSelection";
+import GamePiece from "components/GamePiece";
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +44,6 @@ class App extends React.Component {
     };
   }
 
-
   async componentDidUpdate(prevProps, prevState) {
     const { userChoice, gameLogic, rounds, userScore } = this.state;
 
@@ -53,7 +52,7 @@ class App extends React.Component {
       //TODO - put into new component to make code cleaner
       if (newCPUChoice === userChoice) {
         return this.setState({
-          resultsBanner: "draw",
+          resultsBanner: "DRAW",
           userScore: userScore + 0,
         });
       }
@@ -61,14 +60,14 @@ class App extends React.Component {
       for (let i = 0; i < gameLogic[newCPUChoice].loses.length; i++) {
         if (gameLogic[newCPUChoice].loses[i] === userChoice) {
           return this.setState({
-            resultsBanner: "Player wins!",
+            resultsBanner: "YOU WIN",
             userScore: userScore + 1,
           });
         }
       }
 
       this.setState({
-        resultsBanner: "Player loses :(",
+        resultsBanner: "YOU LOSE",
         userScore: userScore - 1,
       });
     }
@@ -93,10 +92,7 @@ class App extends React.Component {
       userChoice: choice,
       rounds: this.state.rounds + 1,
     });
-   
   };
-
-
 
   // componentWillUnmount () {
   //   //TODO: need to clear result before each round
@@ -108,30 +104,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Header score = {this.state.userScore} />
+        <Header score={this.state.userScore} />
 
+        <div className="play-area">
+          <GamePiece choice={this.state.userChoice} element={1} />
+          <div className="play-area__piece--2">
+            <h1 className="play-area__result " ref={this.resultsBanner}>
+              {this.state.resultsBanner}
+            </h1>
+            <button className="play-area__play-btn">PLAY AGAIN</button>
+          </div>
 
-
-        {`User chooses: ${this.state.userChoice}`}
-        <GamePiece choice ={this.state.userChoice}/>
-        <br />
-        
-        {`CPU chooses: ${this.state.cpuChoice}`}
-        <GamePiece choice ={this.state.cpuChoice}/>
-        <br />
-    
-      
-        <div className="aewf" ref={this.resultsBanner}>
-          {this.state.resultsBanner}
+          <GamePiece choice={this.state.cpuChoice} element={3} />
         </div>
-        
+
         <br />
 
-
-        <UserSelection getUserChoice = {this.getUserChoice}/>
-
-
-
+        <UserSelection getUserChoice={this.getUserChoice} />
       </div>
     );
   }

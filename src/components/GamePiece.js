@@ -29,7 +29,7 @@ const GamePiece = (props) => {
     ),
   };
 
-  return <div className="aewf">{gamePieceLibrary[props.choice]}</div>;
+  return <div className={`play-area__piece--${props.element}`} >{gamePieceLibrary[props.choice]}</div>;
 };
 
 export default GamePiece;
