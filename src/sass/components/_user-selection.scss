@@ -6,40 +6,99 @@
     display: grid;
 }
 
-.game-piece{
 
-    background-color: white;
-    padding: 5rem;
-    width: 20rem;
-    height: 20rem;
+.outer-circle {
+    position: relative;
+    margin: 5rem;
+    width: 10rem;
+    height:  10rem;
     border-radius: 50%;
+    background: #ffffff;
 
+    background-repeat: no-repeat;
+    background-position: center;
 
-    &__img{
-        background-color: white;
-        
-        width: 5rem;
-        height: 5rem;
-        display: block;
-        margin: 2rem auto;
-     
-        // margin: 2rem;
-        
-        
-    
+    &__rock{
+        background-image:url("../../assets/img/icon-rock.svg");
+    }
+    &__paper{
+        background-image:url("../../assets/img/icon-paper.svg");
+    }
+    &__scissors{
+        background-image:url("../../assets/img/icon-scissors.svg");
+    }
+    &__spock{
+        background-image:url("../../assets/img/icon-spock.svg");
+    }
+    &__lizard{
+        background-image:url("../../assets/img/icon-lizard.svg");
     }
 
-    // &--rock{
-    //     // border: solid 10rem red;
-        
-    // }
-    
-}
+  }
+  
+  .inner-circle {
+  
+    content: "";
+    position: absolute;
+    top: -2rem;
+    bottom: -2rem;
+    right: -2rem;
+    left: -2rem;
+    z-index: -1;
+    border-radius: inherit;
 
-.awef{
-    background-color: white;
-    padding: 5rem;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-}
+    &__rock{
+        background-image:$rock-color ;
+    }
+    &__paper{
+        background-image:$paper-color ;
+    }
+    &__scissors{
+        background-image:$scissors-color ;
+    }
+    &__spock{
+        background-image:$spock-color ;
+    }
+    &__lizard{
+        background-image:$lizard-color ;
+    }
+  }
+  
+
+
+
+
+
+
+
+//   .game-piece{
+
+//     background-color: white;
+//     padding: 5rem;
+//     width: 20rem;
+//     height: 20rem;
+//     border-radius: 50%;
+
+
+//     &__img{
+//         background-color: white;
+        
+//         width: 5rem;
+//         height: 5rem;
+//         display: block;
+//         margin: 2rem auto;
+     
+//         // margin: 2rem;
+        
+//     }
+
+//     &--rock{
+//        border: solid 21px red;
+//     }
+
+//     // &--rock{
+//     //     // border: solid 10rem red;
+        
+//     // }
+    
+// }
