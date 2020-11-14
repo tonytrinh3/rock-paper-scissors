@@ -1,0 +1,45 @@
+.user-selection{
+    grid-column: center-start/center-end;
+    // background-image: url("../../assets/img/bg-pentagon.svg");
+    // // height: 100vh;
+    // background-repeat: no-repeat;
+    display: grid;
+}
+
+.game-piece{
+
+    background-color: white;
+    padding: 5rem;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+
+
+    &__img{
+        background-color: white;
+        
+        width: 5rem;
+        height: 5rem;
+        display: block;
+        margin: 2rem auto;
+     
+        // margin: 2rem;
+        
+        
+    
+    }
+
+    // &--rock{
+    //     // border: solid 10rem red;
+        
+    // }
+    
+}
+
+.awef{
+    background-color: white;
+    padding: 5rem;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+}

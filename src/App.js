@@ -4,6 +4,7 @@ import { ROCK, PAPER, SCISSORS, SPOCK, LIZARD } from "utilities/types";
 import getRndInteger from "utilities/getRndInteger";
 
 import Header from 'components/Header';
+import UserSelection from 'components/UserSelection';
 
 class App extends React.Component {
   constructor(props) {
@@ -99,11 +100,13 @@ class App extends React.Component {
   // }
 
   //TODO: RENDERING OF BUTTON COULD BE DONE THROUGH A COMPONENT
+  //TODO: NEED TO MAKE SCORE CONSTANT AFTER REFRESH
   render() {
     return (
       <div className="container">
-        <Header />
-        {`CPU chooses: ${this.state.cpuChoice}`}
+        <Header score = {this.state.userScore} />
+
+        {/* {`CPU chooses: ${this.state.cpuChoice}`}
         <br />
         <button onClick={() => this.getUserChoice(ROCK)}>Rock</button>
         <button onClick={() => this.getUserChoice(PAPER)}>Paper</button>
@@ -116,9 +119,14 @@ class App extends React.Component {
         <div className="aewf" ref={this.resultsBanner}>
           {this.state.resultsBanner}
         </div>
-        <p>awefawef</p>
-        <br />
-        {this.state.userScore}
+        
+        <br /> */}
+
+
+        <UserSelection/>
+
+
+
       </div>
     );
   }
