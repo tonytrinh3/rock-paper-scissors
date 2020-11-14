@@ -1,5 +1,5 @@
 .rules-btn{
-    grid-column:center-start/center-end;
+    grid-column:full-start/full-end;
     grid-row: 1000;
     justify-self: end;
     align-self: end;
@@ -7,10 +7,13 @@
     border-radius: $std-border-radius;
     color: $default-text-color;
     width: 20rem;
+    transform: translateX(-70%);
 
     @media only screen and (max-width:$mobile-width){
+        grid-column:center-start/center-end;
         justify-self: center;
         align-self: center;
+        transform: translateX(0%);
     }
 
 }

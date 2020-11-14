@@ -9,7 +9,7 @@
     [center-end]
     minmax(6rem, 1fr) [full-end];
     
-    grid-template-rows: max-content max-content 10vh max-content ;
+    grid-template-rows: max-content 70vh max-content ;
 
     @media only screen and (max-width:$mobile-width){
 
@@ -21,7 +21,7 @@
         [center-end]
         minmax(2rem, 1fr) [full-end];
 
-        grid-template-rows: max-content max-content max-content  ;
+        grid-template-rows: max-content 70vh max-content  ;
   }
 
 

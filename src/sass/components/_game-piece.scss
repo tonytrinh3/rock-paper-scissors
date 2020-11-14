@@ -31,10 +31,12 @@
   
     &__scissors {
       background-image: url("../../assets/img/icon-scissors.svg");
+
       &--position {
         grid-row: 1;
         grid-column: 3;
       }
+      
     }
   
     &__paper {
