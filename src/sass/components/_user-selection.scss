@@ -5,11 +5,12 @@
   // background-repeat: no-repeat;
 
   &__pentagon {
-    background-image: url("../../assets/img/bg-pentagon.svg");
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1000;
+    // background-image: url("../../assets/img/bg-pentagon.svg");
+    // height: 100vh;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // z-index: -1000;
+
     display: grid;
     grid-template-columns: repeat(5, 10rem);
     grid-template-rows: repeat(3, 20rem);
@@ -19,45 +20,66 @@
 .outer-circle {
   position: relative;
   margin: 5rem;
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
   border-radius: 50%;
   background: #ffffff;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 50%;
   cursor: pointer;
 
+  &--large {
+    width: 30rem;
+    height: 30rem;
+  }
 
   &__scissors {
     background-image: url("../../assets/img/icon-scissors.svg");
-    grid-row: 1;
-    grid-column:3;
+    &--position {
+      grid-row: 1;
+      grid-column: 3;
+    }
   }
 
   &__paper {
     background-image: url("../../assets/img/icon-paper.svg");
-    grid-row: 2;
-    grid-column:5;
+
+    &--position {
+      grid-row: 2;
+      grid-column: 5;
+    }
   }
 
   &__spock {
     background-image: url("../../assets/img/icon-spock.svg");
-    grid-row: 2;
-    
+
+    &--position {
+      grid-row: 2;
+      grid-column: 1;
+    }
   }
   &__lizard {
     background-image: url("../../assets/img/icon-lizard.svg");
-    grid-row: 3;
-    grid-column:2;
+
+    &--position {
+      grid-row: 3;
+      grid-column: 2;
+    }
   }
   &__rock {
     background-image: url("../../assets/img/icon-rock.svg");
-    grid-row: 3;
-    grid-column:4;
+
+    &--position {
+      grid-row: 3;
+      grid-column: 4;
+    }
   }
 }
 
 .inner-circle {
+  //start from center of the circle
+  //start off as square - go -2 rem out
   content: "";
   position: absolute;
   top: -2rem;
@@ -67,13 +89,20 @@
   z-index: -1;
   border-radius: inherit;
 
+  &--large {
+    top: -3rem;
+    bottom: -3rem;
+    right: -3rem;
+    left: -3rem;
+  }
+
   &__scissors {
     background-image: $scissors-color;
   }
   &__paper {
     background-image: $paper-color;
   }
- 
+
   &__spock {
     background-image: $spock-color;
   }

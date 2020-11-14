@@ -5,6 +5,7 @@ import getRndInteger from "utilities/getRndInteger";
 
 import Header from 'components/Header';
 import UserSelection from 'components/UserSelection';
+import GamePiece from 'components/GamePiece';
 
 class App extends React.Component {
   constructor(props) {
@@ -92,7 +93,7 @@ class App extends React.Component {
       userChoice: choice,
       rounds: this.state.rounds + 1,
     });
-    console.log(this.userChoice);
+   
   };
 
 
@@ -109,11 +110,17 @@ class App extends React.Component {
       <div className="container">
         <Header score = {this.state.userScore} />
 
+
+
+        {`User chooses: ${this.state.userChoice}`}
+        <GamePiece choice ={this.state.userChoice}/>
+        <br />
+        
         {`CPU chooses: ${this.state.cpuChoice}`}
+        <GamePiece choice ={this.state.cpuChoice}/>
         <br />
     
-        {`User chooses: ${this.state.userChoice}`}
-        <br />
+      
         <div className="aewf" ref={this.resultsBanner}>
           {this.state.resultsBanner}
         </div>
