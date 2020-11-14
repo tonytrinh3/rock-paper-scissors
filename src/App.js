@@ -116,14 +116,14 @@ class App extends React.Component {
       <div className="play-area">
         <h2 className="play-area__name play-area__name--1">YOU PICKED</h2>
         <h2 className="play-area__name play-area__name--2">THE HOUSE PICKED</h2>
-        <GamePiece choice={this.state.userChoice} element={1} />
+        <GamePiece choice={this.state.userChoice} element={1} results = {this.state.resultsBanner} />
         <div className="play-area__piece play-area__piece--2">
           <h1 className="play-area__result " >
             {this.state.resultsBanner}
           </h1>
           <button onClick = {()=>this.setState({showResults: false})}className="play-area__play-btn">PLAY AGAIN</button>
         </div>
-        <GamePiece choice={this.state.cpuChoice} element={3} />
+        <GamePiece choice={this.state.cpuChoice} element={3} results = {this.state.resultsBanner} />
       </div>
     );
   }

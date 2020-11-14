@@ -1,8 +1,7 @@
 import React from "react";
 
 const GamePiece = (props) => {
-
-    //TODO: MAYBE NEED TO PUT THIS AS A SEPARATE COMPONENT bc USER SELECTION USE SAME CODE
+  //TODO: NEED TO PUT THIS AS A SEPARATE COMPONENT bc USER SELECTION USE SAME CODE
   const gamePieceLibrary = {
     ROCK: (
       <div className="outer-circle outer-circle--large outer-circle__rock">
@@ -31,7 +30,28 @@ const GamePiece = (props) => {
     ),
   };
 
-  return <div className={`play-area__piece play-area__piece--${props.element}`} >{gamePieceLibrary[props.choice]}</div>;
+  let renderedElement = null;
+  if (props.results === "YOU WIN" && props.element === 1) {
+    renderedElement = (
+      <div className={`pulse-ring play-area__piece play-area__piece--${1} `}>
+        {gamePieceLibrary[props.choice]}
+      </div>
+    );
+  } else if (props.results === "YOU LOSE" && props.element === 3) {
+    renderedElement = (
+      <div className={`pulse-ring play-area__piece play-area__piece--${3} `}>
+        {gamePieceLibrary[props.choice]}
+      </div>
+    );
+  } else {
+    renderedElement = (
+      <div className={`play-area__piece play-area__piece--${props.element} `}>
+        {gamePieceLibrary[props.choice]}
+      </div>
+    );
+  }
+
+  return renderedElement;
 };
 
 export default GamePiece;

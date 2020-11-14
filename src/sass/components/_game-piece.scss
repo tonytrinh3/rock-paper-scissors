@@ -9,6 +9,8 @@
     background-position: center;
     background-size: 50%;
     cursor: pointer;
+    
+
   
     @media only screen and (max-width:$mobile-width){
       width: 8rem;
@@ -36,7 +38,7 @@
         grid-row: 1;
         grid-column: 3;
       }
-      
+
     }
   
     &__paper {
@@ -85,6 +87,8 @@
     left: -2rem;
     z-index: -1;
     border-radius: inherit;
+    
+   
   
     &--large {
       top: -3rem;
@@ -110,7 +114,8 @@
       background-image: $rock-color;
     }
   }
-  
+
+
   //   .game-piece{
   
   //     background-color: white;
