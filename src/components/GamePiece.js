@@ -2,6 +2,9 @@ import React from "react";
 
 const GamePiece = (props) => {
   //TODO: NEED TO PUT THIS AS A SEPARATE COMPONENT bc USER SELECTION USE SAME CODE
+  let renderedElement = null;
+
+  const { element, results } = props;
   const gamePieceLibrary = {
     ROCK: (
       <div className="outer-circle outer-circle--large outer-circle__rock">
@@ -30,22 +33,29 @@ const GamePiece = (props) => {
     ),
   };
 
-  let renderedElement = null;
-  if (props.results === "YOU WIN" && props.element === 1) {
+  if (results === "YOU WIN" && element === 1) {
     renderedElement = (
-      <div className={`pulse-ring play-area__piece play-area__piece--${1} `}>
+      <div className={`pulse  play-area__piece play-area__piece--${1} `}>
         {gamePieceLibrary[props.choice]}
       </div>
     );
-  } else if (props.results === "YOU LOSE" && props.element === 3) {
+  } else if (results === "YOU LOSE" && element === 3) {
     renderedElement = (
-      <div className={`pulse-ring play-area__piece play-area__piece--${3} `}>
+      <div className={`pulse  play-area__piece play-area__piece--${3} `}>
+        {gamePieceLibrary[props.choice]}
+      </div>
+    );
+  } else if (element === 1) {
+    renderedElement = (
+      <div
+        className={`play-area__piece play-area__piece--${1} `}
+      >
         {gamePieceLibrary[props.choice]}
       </div>
     );
   } else {
     renderedElement = (
-      <div className={`play-area__piece play-area__piece--${props.element} `}>
+      <div className={`play-area__piece play-area__piece--${3}`}>
         {gamePieceLibrary[props.choice]}
       </div>
     );
