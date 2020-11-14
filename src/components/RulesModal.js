@@ -15,7 +15,7 @@ const RulesModal = (props) => {
           src={closeBtn}
           alt="close-btn"
         />
-        <img className="rules-modal__display__rules" src={rules} alt="rules" />
+        <img className="rules-modal__display__rules-img" src={rules} alt="rules" />
       </div>
     </div>
   );
