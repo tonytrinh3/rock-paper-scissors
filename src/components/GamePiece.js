@@ -8,35 +8,35 @@ const GamePiece = (props) => {
   const { element, results } = props;
   const gamePieceLibrary = {
     ROCK: (
-      <div className="outer-circle outer-circle--large outer-circle__rock">
-        <div className="inner-circle inner-circle--large inner-circle__rock"></div>
+      <div className="outer-circle outer-circle--large outer-circle__ROCK">
+        <div className="inner-circle inner-circle--large inner-circle__ROCK"></div>
       </div>
     ),
     PAPER: (
-      <div className="outer-circle outer-circle--large outer-circle__paper ">
-        <div className="inner-circle inner-circle--large inner-circle__paper"></div>
+      <div className="outer-circle outer-circle--large outer-circle__PAPER ">
+        <div className="inner-circle inner-circle--large inner-circle__PAPER"></div>
       </div>
     ),
     SCISSORS: (
-      <div className="outer-circle outer-circle--large outer-circle__scissors ">
-        <div className="inner-circle inner-circle--large inner-circle__scissors"></div>
+      <div className="outer-circle outer-circle--large outer-circle__SCISSORS ">
+        <div className="inner-circle inner-circle--large inner-circle__SCISSORS"></div>
       </div>
     ),
     SPOCK: (
-      <div className="outer-circle outer-circle--large outer-circle__spock ">
-        <div className="inner-circle inner-circle--large inner-circle__spock"></div>
+      <div className="outer-circle outer-circle--large outer-circle__SPOCK ">
+        <div className="inner-circle inner-circle--large inner-circle__SPOCK"></div>
       </div>
     ),
     LIZARD: (
-      <div className="outer-circle outer-circle--large outer-circle__lizard ">
-        <div className="inner-circle inner-circle--large inner-circle__lizard"></div>
+      <div className="outer-circle outer-circle--large outer-circle__LIZARD ">
+        <div className="inner-circle inner-circle--large inner-circle__LIZARD"></div>
       </div>
     ),
   };
 
   if (results === YOU_WIN && element === 1) {
     renderedElement = (
-      <div className={`pulse  play-area__piece play-area__piece--${1} `}>
+      <div className={`pulse play-area__piece play-area__piece--${1} `}>
         {gamePieceLibrary[props.choice]}
       </div>
     );

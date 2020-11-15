@@ -9,7 +9,6 @@
   background-position: center;
   background-size: 50%;
   cursor: pointer;
-   
 
   @media only screen and (max-width: $mobile-width) {
     width: 8rem;
@@ -31,31 +30,22 @@
     background: hsl(237, 49%, 15%);
   }
 
-  &__scissors {
+  &__SCISSORS {
     background-image: url("../../assets/img/icon-scissors.svg");
-   
   }
 
-  &__paper {
+  &__PAPER {
     background-image: url("../../assets/img/icon-paper.svg");
-
-  
   }
 
-  &__spock {
+  &__SPOCK {
     background-image: url("../../assets/img/icon-spock.svg");
-
-   
   }
-  &__lizard {
+  &__LIZARD {
     background-image: url("../../assets/img/icon-lizard.svg");
-
-
   }
-  &__rock {
+  &__ROCK {
     background-image: url("../../assets/img/icon-rock.svg");
-
-   
   }
 }
 
@@ -78,21 +68,20 @@
     left: -3rem;
   }
 
-  &__scissors {
+  &__SCISSORS {
     background-image: $scissors-color;
-    // transform: translateX(-10rem);
   }
-  &__paper {
+  &__PAPER {
     background-image: $paper-color;
   }
 
-  &__spock {
+  &__SPOCK {
     background-image: $spock-color;
   }
-  &__lizard {
+  &__LIZARD {
     background-image: $lizard-color;
   }
-  &__rock {
+  &__ROCK {
     background-image: $rock-color;
   }
 }

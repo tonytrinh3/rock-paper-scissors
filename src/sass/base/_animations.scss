@@ -4,17 +4,22 @@
   animation-fill-mode: forwards;
 }
 
+.weapon-select:hover{
+    animation: pulsate infinite 1.5s;
+    animation-fill-mode: forwards;
+}
+
 @keyframes pulsate {
   0% {
     -webkit-transform: scale(1, 1);
     opacity: 1;
   }
 
-  100% {
+  50% {
     -webkit-transform: scale(1.2, 1.2);
     opacity: 1;
   }
-  0% {
+  100% {
     -webkit-transform: scale(1, 1);
     opacity: 1;
   }

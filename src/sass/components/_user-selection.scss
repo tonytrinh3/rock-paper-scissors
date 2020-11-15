@@ -31,31 +31,31 @@
         background-size: 100%;
         // column-gap: 1rem;
     }
-    &__scissors{
+    &__SCISSORS{
       grid-row: 1;
       grid-column: 3;
       // transform: translateX(-20);
     }
 
-    &__spock{
+    &__SPOCK{
       grid-row: 2;
       grid-column: 1;
       
     }
 
-    &__paper{
+    &__PAPER{
       grid-row: 2;
       grid-column: 5;
       
     }
 
-    &__lizard{
+    &__LIZARD{
       grid-row: 3;
       grid-column: 2;
       
     }
 
-    &__rock{
+    &__ROCK{
       grid-row: 3;
       grid-column: 4;
       
