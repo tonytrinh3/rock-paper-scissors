@@ -1,6 +1,15 @@
 import React from "react";
 import "sass/main.scss";
-import { ROCK, PAPER, SCISSORS, SPOCK, LIZARD } from "utilities/types";
+import {
+  ROCK,
+  PAPER,
+  SCISSORS,
+  SPOCK,
+  LIZARD,
+  DRAW,
+  YOU_WIN,
+  YOU_LOSE,
+} from "utilities/types";
 import getRndInteger from "utilities/getRndInteger";
 
 import Header from "components/Header";
@@ -8,7 +17,6 @@ import UserSelection from "components/UserSelection";
 import GamePiece from "components/GamePiece";
 import RulesModal from "components/RulesModal";
 
-//TODO on load - show modal first...
 //TODO: NEED TO MAKE SCORE CONSTANT AFTER REFRESH
 class App extends React.Component {
   constructor(props) {
@@ -45,20 +53,46 @@ class App extends React.Component {
           loses: [SCISSORS, ROCK],
         },
       },
+      scoring: {
+        DRAW: 0,
+        "YOU WIN": 1,
+        "YOU LOSE": -1,
+      },
     };
   }
 
   componentDidMount() {
+    //localStorage.setItem('userScore', 0) //reset
+    //this is inital call of score
+    let userScore = parseInt(localStorage.getItem("userScore"));
+    console.log(typeof userScore);
+
+    this.setState({
+      userScore: userScore,
+    });
+
     this.timer = setTimeout(() => {
       this.setState({ showCPUChoice: true });
     }, 2000);
-  
   }
-  
-  componentWillUnmount(){
-    console.log("component will unmount")
-    clearTimeout(this.timer)
-  }
+
+  _handleScoreUpdate = (update) => {
+    let { scoring, resultsBanner } = this.state;
+    console.log(scoring[YOU_WIN]);
+
+    const merge = parseInt(localStorage.getItem("userScore")) + scoring[update];
+
+    localStorage.setItem("userScore", merge);
+
+    const timer = setTimeout(() => {
+      this.setState({ userScore: merge });
+    }, 2000);
+  };
+
+  // componentWillUnmount(){
+  //   console.log("component will unmount")
+  //   clearTimeout(this.timer)
+  // }
   // async componentDidUpdate(prevProps, prevState){
   //   const {  showCPUChoice } = this.state;
 
@@ -69,33 +103,34 @@ class App extends React.Component {
   //   }
   // }
 
-
   async componentDidUpdate(prevProps, prevState) {
     const { userChoice, gameLogic, rounds, userScore } = this.state;
+
+    let newScore = 0;
 
     if (prevState.rounds !== rounds) {
       let newCPUChoice = await this.getCPUChoice();
       //TODO - put into new component to make code cleaner
       if (newCPUChoice === userChoice) {
+        this._handleScoreUpdate(DRAW);
         return this.setState({
-          resultsBanner: "DRAW",
-          userScore: userScore + 0,
+          resultsBanner: DRAW,
         });
       }
 
       for (let i = 0; i < gameLogic[newCPUChoice].loses.length; i++) {
         if (gameLogic[newCPUChoice].loses[i] === userChoice) {
+          this._handleScoreUpdate(YOU_WIN);
           return this.setState({
-            resultsBanner: "YOU WIN",
-            userScore: userScore + 1,
+            resultsBanner: YOU_WIN,
+          });
+        } else {
+          this._handleScoreUpdate(YOU_LOSE);
+          return this.setState({
+            resultsBanner: YOU_LOSE,
           });
         }
       }
-
-      this.setState({
-        resultsBanner: "YOU LOSE",
-        userScore: userScore - 1,
-      });
     }
   }
 
@@ -157,7 +192,6 @@ class App extends React.Component {
         ) : (
           <div className="outer-circle outer-circle--large outer-circle__cpu-only play-area__piece play-area__piece--3"></div>
         )}
-
       </div>
     );
   }
