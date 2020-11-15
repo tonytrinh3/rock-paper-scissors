@@ -10,7 +10,9 @@ import {
   YOU_WIN,
   YOU_LOSE,
 } from "utilities/types";
-import getRndInteger from "utilities/getRndInteger";
+
+import gameLogicSelection from "utilities/gameLogicSelection";
+import cpuChoice from "utilities/cpuChoice";
 
 import Header from "components/Header";
 import UserSelection from "components/UserSelection";
@@ -77,10 +79,10 @@ class App extends React.Component {
   }
 
   _handleScoreUpdate = (update) => {
-    let { scoring, resultsBanner } = this.state;
-    console.log(scoring[YOU_WIN]);
+    let { scoring } = this.state;
+ 
 
-    const merge = parseInt(localStorage.getItem("userScore")) + scoring[update];
+    const merge = parseInt(localStorage.getItem("userScore")) + scoring[update]+0;
 
     localStorage.setItem("userScore", merge);
 
@@ -104,48 +106,37 @@ class App extends React.Component {
   // }
 
   async componentDidUpdate(prevProps, prevState) {
-    const { userChoice, gameLogic, rounds, userScore } = this.state;
-
-    let newScore = 0;
+    const { userChoice, gameLogic, rounds,cpuOption } = this.state;
 
     if (prevState.rounds !== rounds) {
-      let newCPUChoice = await this.getCPUChoice();
-      //TODO - put into new component to make code cleaner
-      if (newCPUChoice === userChoice) {
-        this._handleScoreUpdate(DRAW);
-        return this.setState({
-          resultsBanner: DRAW,
-        });
-      }
 
-      for (let i = 0; i < gameLogic[newCPUChoice].loses.length; i++) {
-        if (gameLogic[newCPUChoice].loses[i] === userChoice) {
-          this._handleScoreUpdate(YOU_WIN);
-          return this.setState({
-            resultsBanner: YOU_WIN,
-          });
-        } else {
-          this._handleScoreUpdate(YOU_LOSE);
-          return this.setState({
-            resultsBanner: YOU_LOSE,
-          });
-        }
-      }
+     
+      let newCPUChoice = await cpuChoice(cpuOption,this.getCPUChoice);
+
+      gameLogicSelection(
+        newCPUChoice,
+        userChoice,
+        gameLogic,
+        this.getResultsBanner,
+        this._handleScoreUpdate
+      );
+
     }
   }
 
-  getCPUChoice() {
-    //in order to make sure we get cpu results first then render game results and score second
-    return new Promise((resolve) => {
-      const index = getRndInteger(0, 4);
-      const cpuChoice = this.state.cpuOption[index];
-      this.setState({
-        cpuChoice: cpuChoice,
-      });
-      setTimeout(() => {
-        resolve(this.state.cpuChoice);
-      }, 10);
+  getResultsBanner=(nextState)=> {
+    this.setState({
+      resultsBanner: nextState
     });
+  }
+
+  getCPUChoice=(nextState)=> {
+
+    this.setState({
+      cpuChoice: nextState
+    });
+
+
   }
 
   getUserChoice = (choice) => {
