@@ -66,7 +66,15 @@ class App extends React.Component {
   componentDidMount() {
     //localStorage.setItem('userScore', 0) //reset
     //this is inital call of score
+    //
+
+    
     let userScore = parseInt(localStorage.getItem("userScore"));
+   
+    if(Number.isNaN(userScore)) {
+      userScore = 0;
+    }
+   
     console.log(typeof userScore);
 
     this.setState({
@@ -81,7 +89,6 @@ class App extends React.Component {
   _handleScoreUpdate = (update) => {
     let { scoring } = this.state;
  
-
     const merge = parseInt(localStorage.getItem("userScore")) + scoring[update]+0;
 
     localStorage.setItem("userScore", merge);
@@ -135,7 +142,6 @@ class App extends React.Component {
     this.setState({
       cpuChoice: nextState
     });
-
 
   }
 
