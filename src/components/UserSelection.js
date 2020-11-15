@@ -11,26 +11,24 @@ const UserSelection = (props) => {
 
   const choices = [ROCK, PAPER, SCISSORS, SPOCK, LIZARD];
 
-  const renderChoices = () =>{
-    return choices.map(choice =>{
-      return (<div className={`weapon-select user-selection__pentagon__${choice}`}>
-      <div
-        onClick={() => onClickFunc(choice)}
-        className={`outer-circle outer-circle__${choice} `}
-      >
-        <div className={`inner-circle inner-circle__${choice}`}></div>
-      </div>
-    </div>)
-
-    })
-  }
+  const renderChoices = () => {
+    return choices.map((choice) => {
+      return (
+        <div className={`weapon-select user-selection__pentagon__${choice}`}>
+          <div
+            onClick={() => onClickFunc(choice)}
+            className={`outer-circle outer-circle__${choice} `}
+          >
+            <div className={`inner-circle inner-circle__${choice}`}></div>
+          </div>
+        </div>
+      );
+    });
+  };
 
   return (
     <div className="user-selection">
-      <div className="user-selection__pentagon">
-          {renderChoices()}
-        
-      </div>
+      <div className="user-selection__pentagon">{renderChoices()}</div>
     </div>
   );
 };
