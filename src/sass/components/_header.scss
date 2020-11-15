@@ -1,5 +1,6 @@
 .header{
     grid-column: center-start/center-end;
+    grid-row: 1;
     border: solid 5px $header-outline-color;
     border-radius: $std-border-radius;
     padding: 2rem 3rem;

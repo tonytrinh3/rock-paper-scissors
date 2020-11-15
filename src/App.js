@@ -10,16 +10,15 @@ import {
   YOU_WIN,
   YOU_LOSE,
 } from "utilities/types";
-
 import gameLogicSelection from "utilities/gameLogicSelection";
 import cpuChoice from "utilities/cpuChoice";
 
 import Header from "components/Header";
 import UserSelection from "components/UserSelection";
-import GamePiece from "components/GamePiece";
-import RulesModal from "components/RulesModal";
 
-//TODO: NEED TO MAKE SCORE CONSTANT AFTER REFRESH
+import RulesModal from "components/RulesModal";
+import PlayArea from "components/PlayArea";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -64,46 +63,36 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //localStorage.setItem('userScore', 0) //reset
-    //this is inital call of score
-    //
-
-    
     let userScore = parseInt(localStorage.getItem("userScore"));
-   
-    if(Number.isNaN(userScore)) {
+
+    if (Number.isNaN(userScore)) {
       userScore = 0;
     }
-   
-    console.log(typeof userScore);
 
     this.setState({
       userScore: userScore,
     });
 
-    this.timer = setTimeout(() => {
-      this.setState({ showCPUChoice: true });
-    }, 2000);
+    // this.timer = setTimeout(() => {
+    //   this.setState({ showCPUChoice: true });
+    // }, 2000);
   }
 
   _handleScoreUpdate = (update) => {
     let { scoring } = this.state;
     let userScore = parseInt(localStorage.getItem("userScore"));
- 
-  
 
-    if(Number.isNaN(userScore)) {
+    if (Number.isNaN(userScore)) {
       userScore = 0;
     }
-    
-    const merge =  userScore + scoring[update];
 
+    const merge = userScore + scoring[update];
 
     localStorage.setItem("userScore", merge);
 
     const timer = setTimeout(() => {
       this.setState({ userScore: merge });
-    }, 2000);
+    }, 2500);
   };
 
   // componentWillUnmount(){
@@ -121,12 +110,10 @@ class App extends React.Component {
   // }
 
   async componentDidUpdate(prevProps, prevState) {
-    const { userChoice, gameLogic, rounds,cpuOption } = this.state;
+    const { userChoice, gameLogic, rounds, cpuOption } = this.state;
 
     if (prevState.rounds !== rounds) {
-
-     
-      let newCPUChoice = await cpuChoice(cpuOption,this.getCPUChoice);
+      let newCPUChoice = await cpuChoice(cpuOption, this.getCPUChoice);
 
       gameLogicSelection(
         newCPUChoice,
@@ -135,23 +122,20 @@ class App extends React.Component {
         this.getResultsBanner,
         this._handleScoreUpdate
       );
-
     }
   }
 
-  getResultsBanner=(nextState)=> {
+  getResultsBanner = (nextState) => {
     this.setState({
-      resultsBanner: nextState
+      resultsBanner: nextState,
     });
-  }
+  };
 
-  getCPUChoice=(nextState)=> {
-
+  getCPUChoice = (nextState) => {
     this.setState({
-      cpuChoice: nextState
+      cpuChoice: nextState,
     });
-
-  }
+  };
 
   getUserChoice = (choice) => {
     this.setState({
@@ -160,11 +144,20 @@ class App extends React.Component {
     });
   };
 
-  triggerRenderResults = (nextState) => {
+  triggerRenderResults = (nextStateResult,nextStateChoice) => {
     this.setState({
-      showResults: nextState,
+      showResults: nextStateResult,
+      showCPUChoice: nextStateChoice
     });
   };
+
+  triggerShowCPUChoice = (nextState) => {
+    this.setState({
+      showCPUChoice: nextState
+    });
+  };
+
+
 
   closeModal = (nextState) => {
     this.setState({
@@ -172,43 +165,29 @@ class App extends React.Component {
     });
   };
 
-  //i want to keep this here to avoid 2 drops of props if this were to become a separate component
-  renderPlayArea() {
-    const { resultsBanner, userChoice, showCPUChoice, cpuChoice } = this.state;
-
-    return (
-      <div className="play-area">
-        <h2 className="play-area__name play-area__name--1 ">YOU PICKED</h2>
-        <h2 className="play-area__name play-area__name--2 ">
-          THE HOUSE PICKED
-        </h2>
-        <GamePiece choice={userChoice} element={1} results={resultsBanner} />
-        <div className="play-area__piece play-area__piece--2 fade-in-result ">
-          <h1 className="play-area__result  ">{resultsBanner}</h1>
-          <button
-            onClick={() => this.setState({ showResults: false })}
-            className=" play-area__play-btn"
-          >
-            PLAY AGAIN
-          </button>
-        </div>
-        {showCPUChoice ? (
-          <GamePiece choice={cpuChoice} element={3} results={resultsBanner} />
-        ) : (
-          <div className="outer-circle outer-circle--large outer-circle__cpu-only play-area__piece play-area__piece--3"></div>
-        )}
-      </div>
-    );
-  }
-
   render() {
-    const { userScore, showResults, showRulesModal } = this.state;
+    const {
+      userScore,
+      showResults,
+      showRulesModal,
+      resultsBanner,
+      userChoice,
+      showCPUChoice,
+      cpuChoice,
+    } = this.state;
 
     return (
       <div className="container">
         <Header score={userScore} />
         {showResults ? (
-          this.renderPlayArea()
+          <PlayArea
+            resultsBanner={resultsBanner}
+            userChoice={userChoice}
+            showCPUChoice={showCPUChoice}
+            cpuChoice={cpuChoice}
+            triggerRenderResults={this.triggerRenderResults}
+            triggerShowCPUChoice = {this.triggerShowCPUChoice}
+          />
         ) : (
           <UserSelection
             getUserChoice={this.getUserChoice}

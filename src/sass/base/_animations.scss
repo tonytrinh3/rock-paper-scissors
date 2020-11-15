@@ -14,11 +14,15 @@
     -webkit-transform: scale(1.2, 1.2);
     opacity: 1;
   }
+  0% {
+    -webkit-transform: scale(1, 1);
+    opacity: 1;
+  }
 }
 
 .fade-in-result {
   animation: 1s fadeIn-results;
-  animation-delay: 2s;
+  animation-delay: 2.5s;
   animation-fill-mode: forwards;
   visibility: hidden;
 }

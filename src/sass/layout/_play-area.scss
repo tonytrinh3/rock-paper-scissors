@@ -1,6 +1,6 @@
 .play-area{
     grid-column: center-start/center-end;
-
+    grid-row: 2;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(2,max-content);
@@ -10,7 +10,7 @@
     margin-top: 10rem; 
 
     @media only screen and (max-width:$mobile-width){
-        margin-top: 5rem; 
+    
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: repeat(3,minmax(min-content,max-content));
         column-gap: 2rem;

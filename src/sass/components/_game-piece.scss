@@ -9,6 +9,7 @@
   background-position: center;
   background-size: 50%;
   cursor: pointer;
+   
 
   @media only screen and (max-width: $mobile-width) {
     width: 8rem;
@@ -32,45 +33,29 @@
 
   &__scissors {
     background-image: url("../../assets/img/icon-scissors.svg");
-
-    &--position {
-      grid-row: 1;
-      grid-column: 3;
-    }
+   
   }
 
   &__paper {
     background-image: url("../../assets/img/icon-paper.svg");
 
-    &--position {
-      grid-row: 2;
-      grid-column: 5;
-    }
+  
   }
 
   &__spock {
     background-image: url("../../assets/img/icon-spock.svg");
 
-    &--position {
-      grid-row: 2;
-      grid-column: 1;
-    }
+   
   }
   &__lizard {
     background-image: url("../../assets/img/icon-lizard.svg");
 
-    &--position {
-      grid-row: 3;
-      grid-column: 2;
-    }
+
   }
   &__rock {
     background-image: url("../../assets/img/icon-rock.svg");
 
-    &--position {
-      grid-row: 3;
-      grid-column: 4;
-    }
+   
   }
 }
 
@@ -95,6 +80,7 @@
 
   &__scissors {
     background-image: $scissors-color;
+    // transform: translateX(-10rem);
   }
   &__paper {
     background-image: $paper-color;

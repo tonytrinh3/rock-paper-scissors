@@ -8,11 +8,17 @@
         margin-top:5rem; 
     }
   &__pentagon {
-    // background-image: url("../../assets/img/bg-pentagon.svg");
-    // // height: 100vh;
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // z-index: -1000;
+    background-image: url("../../assets/img/bg-pentagon.svg");
+
+    background-repeat: no-repeat;
+    // background-position: center top;
+    // background-attachment: fixed;
+    // height: 50rem;
+    // width: 50rem;
+    background-size: 55rem 55rem ;
+    background-position: 8rem 8rem;
+    // background-size: cover;
+    z-index: 4;
 
     display: grid;
     grid-template-columns: repeat(5, minmax(min-content,max-content));
@@ -20,8 +26,41 @@
     row-gap: 10rem;
 
     @media only screen and (max-width:$mobile-width){
-        row-gap: 5rem;
+        // row-gap: 10rem;
+        background-position: -2rem 5rem;
+        background-size: 100%;
+        // column-gap: 1rem;
+    }
+    &__scissors{
+      grid-row: 1;
+      grid-column: 3;
+      // transform: translateX(-20);
+    }
 
+    &__spock{
+      grid-row: 2;
+      grid-column: 1;
+      
+    }
+
+    &__paper{
+      grid-row: 2;
+      grid-column: 5;
+      
+    }
+
+    &__lizard{
+      grid-row: 3;
+      grid-column: 2;
+      
+    }
+
+    &__rock{
+      grid-row: 3;
+      grid-column: 4;
+      
     }
   }
+
+
 }
