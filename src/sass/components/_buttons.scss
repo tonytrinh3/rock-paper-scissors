@@ -8,6 +8,7 @@
     color: $default-text-color;
     width: 20rem;
     transform: translateX(-70%);
+     z-index: 6;
 
     @media only screen and (max-width:$mobile-width){
         grid-column:center-start/center-end;
