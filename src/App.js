@@ -73,9 +73,6 @@ class App extends React.Component {
       userScore: userScore,
     });
 
-    // this.timer = setTimeout(() => {
-    //   this.setState({ showCPUChoice: true });
-    // }, 2000);
   }
 
   _handleScoreUpdate = (update) => {
@@ -95,25 +92,18 @@ class App extends React.Component {
     }, 2500);
   };
 
-  // componentWillUnmount(){
-  //   console.log("component will unmount")
-  //   clearTimeout(this.timer)
-  // }
-  // async componentDidUpdate(prevProps, prevState){
-  //   const {  showCPUChoice } = this.state;
 
-  //   if (prevState.showCPUChoice === showCPUChoice){
-  //     setTimeout(() => {
-  //       this.setState({ showCPUChoice: true });
-  //     }, 2000);
-  //   }
-  // }
+ 
 
   async componentDidUpdate(prevProps, prevState) {
     const { userChoice, gameLogic, rounds, cpuOption } = this.state;
 
     if (prevState.rounds !== rounds) {
       let newCPUChoice = await cpuChoice(cpuOption, this.getCPUChoice);
+
+      const timer = setTimeout(() => {
+        this.setState({ showCPUChoice: true });
+      }, 2000);
 
       gameLogicSelection(
         newCPUChoice,
@@ -144,20 +134,18 @@ class App extends React.Component {
     });
   };
 
-  triggerRenderResults = (nextStateResult,nextStateChoice) => {
+  triggerRenderResults = (nextStateResult, nextStateChoice) => {
     this.setState({
       showResults: nextStateResult,
-      showCPUChoice: nextStateChoice
+      showCPUChoice: nextStateChoice,
     });
   };
 
   triggerShowCPUChoice = (nextState) => {
     this.setState({
-      showCPUChoice: nextState
+      showCPUChoice: nextState,
     });
   };
-
-
 
   closeModal = (nextState) => {
     this.setState({
@@ -186,7 +174,7 @@ class App extends React.Component {
             showCPUChoice={showCPUChoice}
             cpuChoice={cpuChoice}
             triggerRenderResults={this.triggerRenderResults}
-            triggerShowCPUChoice = {this.triggerShowCPUChoice}
+            triggerShowCPUChoice={this.triggerShowCPUChoice}
           />
         ) : (
           <UserSelection

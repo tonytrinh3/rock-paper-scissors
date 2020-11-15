@@ -1,5 +1,5 @@
 import React from "react";
-import {YOU_WIN,YOU_LOSE } from "utilities/types";
+import { YOU_WIN, YOU_LOSE } from "utilities/types";
 
 const GamePiece = (props) => {
   //TODO: NEED TO PUT THIS AS A SEPARATE COMPONENT bc USER SELECTION USE SAME CODE
@@ -42,15 +42,13 @@ const GamePiece = (props) => {
     );
   } else if (results === YOU_LOSE && element === 3) {
     renderedElement = (
-      <div className={`pulse  play-area__piece play-area__piece--${3} `}>
+      <div className={`pulse play-area__piece play-area__piece--${3} `}>
         {gamePieceLibrary[props.choice]}
       </div>
     );
   } else if (element === 1) {
     renderedElement = (
-      <div
-        className={`play-area__piece play-area__piece--${1} `}
-      >
+      <div className={`play-area__piece play-area__piece--${1} `}>
         {gamePieceLibrary[props.choice]}
       </div>
     );
