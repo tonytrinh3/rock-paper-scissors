@@ -7,6 +7,7 @@
   /* you can force inheritance with inherit keyword - it is better in css community
   to put box sizing in the body instead of up here */
   /* change box model so that borders and paddings are no longer added to the total width or total height that we specify for a box. so we are getting rid of that behavior */
+ 
 }
 
 html {
@@ -23,8 +24,11 @@ body {
 
   height: 100vh;
   width: 100vw;
+
  
 }
+
+
 
 button {
   padding: 0;

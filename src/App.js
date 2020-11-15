@@ -5,10 +5,7 @@ import {
   PAPER,
   SCISSORS,
   SPOCK,
-  LIZARD,
-  DRAW,
-  YOU_WIN,
-  YOU_LOSE,
+  LIZARD
 } from "utilities/types";
 import gameLogicSelection from "utilities/gameLogicSelection";
 import cpuChoice from "utilities/cpuChoice";
