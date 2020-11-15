@@ -88,8 +88,16 @@ class App extends React.Component {
 
   _handleScoreUpdate = (update) => {
     let { scoring } = this.state;
+    let userScore = parseInt(localStorage.getItem("userScore"));
  
-    const merge = parseInt(localStorage.getItem("userScore")) + scoring[update]+0;
+  
+
+    if(Number.isNaN(userScore)) {
+      userScore = 0;
+    }
+    
+    const merge =  userScore + scoring[update];
+
 
     localStorage.setItem("userScore", merge);
 
