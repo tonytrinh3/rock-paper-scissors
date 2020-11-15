@@ -72,15 +72,21 @@ class App extends React.Component {
 
   }
 
-  _handleScoreUpdate = (update) => {
+  _handleScoreUpdate = (update,reset) => {
     let { scoring } = this.state;
     let userScore = parseInt(localStorage.getItem("userScore"));
+    let merge = 0;
 
     if (Number.isNaN(userScore)) {
       userScore = 0;
     }
 
-    const merge = userScore + scoring[update];
+    if (reset === "RESET" && update === null){
+      merge = 0;
+    } else {
+      merge = userScore + scoring[update];
+    }
+
 
     localStorage.setItem("userScore", merge);
 
@@ -150,6 +156,12 @@ class App extends React.Component {
     });
   };
 
+  // resetUserScore = (nextState) => {
+  //   this.setState({
+  //     userScore: nextState,
+  //   });
+  // };
+
   render() {
     const {
       userScore,
@@ -163,7 +175,7 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <Header score={userScore} />
+        <Header score={userScore} resetUserScore = {this._handleScoreUpdate} />
         {showResults ? (
           <PlayArea
             resultsBanner={resultsBanner}

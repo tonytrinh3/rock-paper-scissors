@@ -16,6 +16,7 @@ const RulesModal = (props) => {
           alt="close-btn"
         />
         <img className="rules-modal__display__rules-img" src={rules} alt="rules" />
+        <h3 className="rules-modal__display__para" >CLICK ON SCORE TO RESET</h3>
       </div>
     </div>
   );

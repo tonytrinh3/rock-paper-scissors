@@ -21,7 +21,7 @@
         grid-column: center-start/center-end;
         display: grid;
         grid-template-columns: repeat(3,1fr);
-        grid-template-rows: minmax(min-content,max-content) max-content;
+        grid-template-rows: minmax(min-content,max-content) max-content max-content;
         row-gap: 3rem;
         background-color: white;
         height: 45%;
@@ -33,7 +33,7 @@
 
         @media only screen and (max-width:$mobile-width){
             grid-column: full-start/full-end;
-            grid-template-rows:  1fr 1fr 1fr;
+            grid-template-rows:  repeat(4,1fr);
             row-gap: 0rem;
             height:100vh;
             width: 100vw;
@@ -53,6 +53,21 @@
                 grid-column: 1/-1;
             }
         }
+
+        &__para{
+            color: $dark-text-color;
+            grid-row:3;
+            grid-column: 1/-1;
+            align-self: center;
+            justify-self: center;
+
+            @media only screen and (max-width:$mobile-width){
+                grid-row:3;
+            }
+
+        }
+
+
 
 
         &__rules-img{
@@ -83,7 +98,7 @@
             justify-self: end;
 
             @media only screen and (max-width:$mobile-width){
-                grid-row:3;
+                grid-row:4;
                 grid-column: 1/-1;
                 justify-self: center;
             }
