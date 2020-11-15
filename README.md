@@ -1,6 +1,6 @@
 # Front-end: Rock, Paper, Scissors, Lizard, Spock Challenge
 
-![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Rock, Paper, Scissors coding challenge](./rock-paper-scissors-challenge-master/design/desktop-preview.jpg)
 
 ### Rules
 If the player wins, they gain 1 point. If the computer wins, the player loses one point.
